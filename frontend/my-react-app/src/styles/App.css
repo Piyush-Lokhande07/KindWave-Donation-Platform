@@ -1,0 +1,76 @@
+/* Ensure all elements are sized based on their border-box */
+* {
+    box-sizing: border-box;
+}
+
+/* Reset margin and padding for body */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; 
+}
+
+/* Style for the container */
+.Reg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; /* Ensure it fills the entire viewport */
+}
+
+/* Style for the form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items within the form */
+    padding: 20px;
+    
+    border-radius: 10px;
+}
+
+/* Button and input styling */
+.btn1{
+    background-color: rgb(21, 98, 205);
+    color: white;
+    width: 200px;
+    margin: 2px;
+    height: 30px;
+    padding: 2px;
+    border:1px black solid;
+    
+}
+.btn1:hover {
+    background-color: rgb(45, 45, 218);
+}
+.ggl:hover {
+    background-color: rgb(45, 45, 218);
+}
+.btn{
+    border:none;
+    color: blue;
+    background-color: white;
+    text-decoration: underline;
+}
+
+.link{
+    color: rgb(13, 13, 200);
+}  
+.ggl{
+    width: 200px;
+    height:30px;
+    border: 1px solid black;
+    text-decoration: none;
+    font-size: 0.9rem;
+    background-color: rgb(21, 98, 205);
+    color: white;
+}
+
+input {
+    width: 200px;
+    margin: 2px;
+    height: 30px;
+    padding: 2px;
+    border:1px black solid;
+    padding-left: 20px;
+}
