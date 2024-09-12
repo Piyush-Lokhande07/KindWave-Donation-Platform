@@ -9,6 +9,7 @@ function RegisterAndLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [emailId,setEmailId]=useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -23,7 +24,8 @@ function RegisterAndLogin() {
             };
             const data = {
                 username: username,
-                password: password
+                password: password,
+                emailId:emailId
             };
         
             await axios.post(url, data, config);
@@ -31,6 +33,7 @@ function RegisterAndLogin() {
             if (btnName === 'Register') {
                 setUsername('');
                 setPassword('');
+                setEmailId('');
                 setErrorMessage('Registration successful. Please log in.');
                 setBtnName('Login');
             } else {
@@ -48,19 +51,22 @@ function RegisterAndLogin() {
         setBtnName(btnName === 'Register' ? 'Login' : 'Register');
     }
 
-    function handleGoogleLogin() {
+    function handleGoogleLogin(e) {
+        e.preventDefault(); // Prevent the default button behavior
         window.location.href = 'http://localhost:3000/auth/google';
     }
 
     return (
         <div className="Reg">
             <form className="form" onSubmit={handleSubmit}>
+                <div className="guide">Enter username:</div>
                 <input
                     placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     autoComplete="username"
                 />
+                <div className="guide">Enter password:</div>
                 <input
                     placeholder="Password"
                     type="password"
@@ -68,9 +74,16 @@ function RegisterAndLogin() {
                     onChange={(e) => setPassword(e.target.value)}
                     autoComplete="current-password"
                 />
+                <div className="guide">Enter email Id:</div>
+                <input
+                    placeholder="Email ID"
+                    type="email"
+                    value={emailId}
+                    onChange={(e) => setEmailId(e.target.value)}
+                />
                 <button className="btn1" type="submit">{btnName}</button>
 
-                <button  onClick={handleGoogleLogin} className="btn ggl">
+                <button onClick={handleGoogleLogin} className="btn ggl">
                     Login with Google
                 </button>
 

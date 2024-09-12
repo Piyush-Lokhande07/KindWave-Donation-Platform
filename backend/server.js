@@ -6,6 +6,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const nodemailer = require('nodemailer');
 
 dotenv.config();
 const port = 3000;
@@ -55,6 +56,15 @@ app.use(cors({
 
 app.use(express.json());
 
+// Set up your email transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_ID,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
 // Connect to PostgreSQL
 const client = new Client({
     connectionString: process.env.DB_URL,
@@ -68,10 +78,10 @@ client.connect()
 
 // Register endpoint
 app.post('/register', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, emailId } = req.body;
 
-    if (!username || !password) {
-        return res.status(400).send('Username and password are required');
+    if (!username || !password || !emailId) {
+        return res.status(400).send('Username, password, and email are required');
     }
 
     try {
@@ -79,6 +89,16 @@ app.post('/register', async (req, res) => {
             'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *',
             [username, password]
         );
+
+        // Send a confirmation email
+        const mailOptions = {
+            from: process.env.EMAIL_ID,
+            to: emailId,
+            subject: 'Registration Successful',
+            text: 'Thank you for registering with us!'
+        };
+
+        await transporter.sendMail(mailOptions);
 
         res.status(201).json({
             message: 'User registered successfully',
@@ -93,6 +113,7 @@ app.post('/register', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
+
 
 // Login endpoint
 app.post('/login', async (req, res) => {
@@ -126,7 +147,7 @@ app.post('/login', async (req, res) => {
 app.get('/auth/google', passport.authenticate('google', { scope: ['email'] }));
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-    req.session.isAuthenticated = true; // Set session flag
+    req.session.isAuthenticated = false; // Set session flag
     console.log("Session isAuthenticated:", req.session.isAuthenticated);
     res.redirect('http://localhost:3001'); // Redirect to frontend
 });

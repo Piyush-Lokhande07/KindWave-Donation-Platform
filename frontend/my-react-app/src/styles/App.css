@@ -52,7 +52,9 @@ form {
     background-color: white;
     text-decoration: underline;
 }
-
+.guide{
+    margin-right: 100px;
+}
 .link{
     color: rgb(13, 13, 200);
 }  
