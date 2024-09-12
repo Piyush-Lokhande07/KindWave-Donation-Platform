@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 
 function CampaignForm() {
@@ -26,20 +25,24 @@ function CampaignForm() {
 
     return (
         <div className="campaign-form">
-            <h2>Enter Campaign ID</h2>
-            <form onSubmit={handleFormSubmit}>
-                <label htmlFor="campaignId">Campaign ID:</label>
-                <input
-                    type="text"
-                    id="campaignId"
-                    name="campaignId"
-                    value={campaignId}
-                    onChange={handleInputChange}
-                    required
-                />
-                <button type="submit">Submit</button>
-            </form>
-            {campaign && (
+            {!campaign ? (
+                <>
+                    <h2>Enter Campaign ID</h2>
+                    <form onSubmit={handleFormSubmit}>
+                        <label htmlFor="campaignId">Campaign ID:</label>
+                        <input
+                            type="text"
+                            id="campaignId"
+                            name="campaignId"
+                            value={campaignId}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        <button type="submit">Submit</button>
+                    </form>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                </>
+            ) : (
                 <div className="campaign-details">
                     <h2>Campaign Details</h2>
                     <p><strong>Name:</strong> {campaign.title}</p>
@@ -50,13 +53,8 @@ function CampaignForm() {
                     </button>
                 </div>
             )}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );
 }
-
-CampaignForm.propTypes = {
-    // No props needed anymore
-};
 
 export default CampaignForm;
