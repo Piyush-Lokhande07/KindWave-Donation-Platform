@@ -7,7 +7,8 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh; 
+    height: max-content; 
+
 }
 
 /* Style for the container */
@@ -55,12 +56,73 @@ form {
     background-color: white;
     text-decoration: underline;
 }
+nav{
+    display: flex;
+    justify-content:space-evenly;
+    height: 40px;
+    align-items: center;
+    width: 100%;
+}
+.text{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.con{
+    width: max-content;
+    border: none;
+    background-color: blue;
+    color: white;
+    height: max-content;
+    font-size: 0.9rem;
+}
+img{
+    height: 400px;
+    width: 400px;
+    margin: 20px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+}
+.camp{
+    display: flex;
+    justify-self:flex-start;
+}
+.con:hover{
+    transform: scale(1.08);
+}
+nav{
+    background-color: blue;
+}
 .guide{
     margin-right: 100px;
 }
 .link{
     color: rgb(13, 13, 200);
 }  
+.text p{
+    font-size: 1.2rem;
+}
+.mid{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer {
+    background-color: gray; /* Example background color */
+    text-align: center;
+    padding: 10px; /* Adjust as needed */
+    position: relative; /* Default position */
+    width: 100%;
+}
+.footer p{
+    color: white;
+}
 .ggl{
     width: 200px;
     height:30px;

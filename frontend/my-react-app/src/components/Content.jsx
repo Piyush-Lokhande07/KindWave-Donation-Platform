@@ -1,19 +1,26 @@
-import React from 'react';
-import { useAuth } from './AuthContext'; // Importing the useAuth hook
+import React, { useState } from 'react';
+import Navbar from './Navbar';
+import HomeText from './HomeText';
+import Footer from './Footer';
+import CampaignForm from './CampaignForm';
+import CreateCampaign from './CreateDonateCampaign'; // Ensure this component exists
 
 function Content() {
-    const { logout } = useAuth(); // Destructuring logout from useAuth
+    const [currentView, setCurrentView] = useState('home'); // default view is home
 
-    function handleLogOut(e) {
-        e.preventDefault();
-        logout(); 
-    }
+    const handleNavClick = (view) => {
+        setCurrentView(view);
+    };
 
     return (
-        <div>
-            <button className='btn1 lout' onClick={handleLogOut}>
-                Log Out
-            </button>
+        <div className="content">
+            <Navbar onNavClick={handleNavClick} />
+            <div className="mid-content">
+                {currentView === 'home' && <HomeText />}
+                {currentView === 'donate' && <CampaignForm />}
+                {currentView === 'createCampaign' && <CreateCampaign />}
+            </div>
+            <Footer />
         </div>
     );
 }
