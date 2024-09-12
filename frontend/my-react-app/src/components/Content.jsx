@@ -1,11 +1,19 @@
-
 import React from 'react';
+import { useAuth } from './AuthContext'; // Importing the useAuth hook
 
 function Content() {
+    const { logout } = useAuth(); // Destructuring logout from useAuth
+
+    function handleLogOut(e) {
+        e.preventDefault();
+        logout(); 
+    }
+
     return (
         <div>
-            <h1>Welcome to the Content Page!</h1>
-            <p>This is the protected content for authenticated users.</p>
+            <button className='btn1 lout' onClick={handleLogOut}>
+                Log Out
+            </button>
         </div>
     );
 }

@@ -147,8 +147,8 @@ app.post('/login', async (req, res) => {
 app.get('/auth/google', passport.authenticate('google', { scope: ['email'] }));
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-    req.session.isAuthenticated = false; // Set session flag
-    console.log("Session isAuthenticated:", req.session.isAuthenticated);
+    req.session.isAuthenticated = true; // Set session flag
+    console.log("Session isAuthenticated callback:", req.session.isAuthenticated);
     res.redirect('http://localhost:3001'); // Redirect to frontend
 });
 

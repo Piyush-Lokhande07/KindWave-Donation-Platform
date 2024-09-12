@@ -46,6 +46,9 @@ form {
 .ggl:hover {
     background-color: rgb(45, 45, 218);
 }
+.lout{
+    width: 120px;
+}
 .btn{
     border:none;
     color: blue;
