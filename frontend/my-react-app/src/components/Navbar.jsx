@@ -39,8 +39,6 @@ function Navbar({ onNavClick }) {
     }
     return (
         <nav>
-
-            
             <button className=' con donate' onClick={() => onNavClick('donate')}>Donate</button>
             <button className='con camp' onClick={() => onNavClick('createCampaign')}>Create Donation Campaign</button>
             <button className=' con home' onClick={() => onNavClick('home')}>Home</button>

@@ -106,8 +106,15 @@ nav{
 }  
 .text p{
     font-size: 1.2rem;
+    margin-bottom: 100px;
 }
-.mid{
+.text-container{
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    
+}
+.mid-content{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,12 +123,25 @@ nav{
 .footer {
     background-color: gray; /* Example background color */
     text-align: center;
-    padding: 10px; /* Adjust as needed */
-    position: relative; /* Default position */
+    padding: 10px; 
+    position: relative;
     width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 .footer p{
     color: white;
+}
+.create-camp-btn{
+    width: 200px;
+    padding: 3px;
+   align-self: center;
+   margin-top: 50px;
+  
+   border-radius: 4px;
 }
 .ggl{
     width: 200px;
@@ -132,6 +152,91 @@ nav{
     background-color: rgb(21, 98, 205);
     color: white;
 }
+.large-textarea{
+    width: 600px;
+    height: 350px;
+    padding: 10px;
+}
+.create-campaign form{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+}
+.form-group input{
+    border-radius: 4px;
+    width: 400px;
+    height: 40px;
+    
+}
+.create-campaign h2{
+    display: flex;
+    align-self: center;
+    margin-left: 20%;
+}
+.form-body{
+    background-color: beige;
+    
+    width: 100vw;
+    display: flex;
+    height: 100%;
+    
+    justify-content: center;
+}
+
+.form-body2{
+
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.campaign-details strong{
+    font-size:1.2rem;
+}
+.campaign-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+}
+.campaign-details .pay {
+    margin-top: 50px;
+    width: 200px;
+    padding: 7px;
+    border-radius: 2px;
+    height: 50px;
+    font-size: 1.2rem;
+}
+.description{
+    font-size: 1.2rem;
+}
+
+
+.c-title{
+    font-size: 3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.campaign-form form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+.campaign-form input{
+    margin: 7px;
+}
+.campaign-form{
+    height: 85vh;
+    background-color: beige;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    
+}
+.campaign-form button{
+    width: 70px;
+}
 
 input {
     width: 200px;
@@ -140,4 +245,7 @@ input {
     padding: 2px;
     border:1px black solid;
     padding-left: 20px;
+}
+.lab{
+    font-size: 1.2rem;
 }

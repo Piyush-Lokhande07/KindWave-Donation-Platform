@@ -27,10 +27,12 @@ function CampaignForm() {
         <div className="campaign-form">
             {!campaign ? (
                 <>
-                    <h2>Enter Campaign ID</h2>
+                <div className='form-body2'>
+                <h2>Search Campaign to Donate</h2>
                     <form onSubmit={handleFormSubmit}>
-                        <label htmlFor="campaignId">Campaign ID:</label>
+                        <div className='lab'>Enter Campaign ID:</div>
                         <input
+                            placeholder='Ex.266'
                             type="text"
                             id="campaignId"
                             name="campaignId"
@@ -38,18 +40,21 @@ function CampaignForm() {
                             onChange={handleInputChange}
                             required
                         />
-                        <button type="submit">Submit</button>
+                        <button className='btn1 create-camp-btn ' type="submit">Submit</button>
                     </form>
                     {error && <p style={{ color: 'red' }}>{error}</p>}
+                    </div>
                 </>
+                
+                    
             ) : (
                 <div className="campaign-details">
-                    <h2>Campaign Details</h2>
-                    <p><strong>Name:</strong> {campaign.title}</p>
-                    <p><strong>Description:</strong> {campaign.description}</p>
-                    <p><strong>Amount:</strong> ${campaign.donation_amount}</p>
-                    <button onClick={() => alert('Payment feature coming soon!')}>
-                        Donate ${campaign.donation_amount}
+                    {/* <h2>Campaign Details</h2> */}
+                    <p className='c-title'>{campaign.title}</p>
+                    <p className='description'> {campaign.description}</p>
+                    {/* <p><strong>Amount:</strong> ${campaign.donation_amount}</p> */}
+                    <button className='btn1 pay' onClick={() => alert('Payment feature coming soon!')}>
+                        Donate ₹{campaign.donation_amount}
                     </button>
                 </div>
             )}

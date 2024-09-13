@@ -2,9 +2,10 @@ import React from "react";
 
 function HomeText(){
     return(
-        <div className='text'>
+        <div className="text-container">
+             <div className='text'>
             <img src="/donation-img.webp" alt="donation img" />
-                <h1>Welcome to the Donation Platform!</h1>
+                <h1>Welcome to My Donation Platform!</h1>
                     <p> 
                             Welcome to our Donation Platform, a web application designed to facilitate seamless donations to organizations and causes that matter. Whether you're supporting charities, schools, or any community-driven initiatives, our platform simplifies the process for donors and organizations alike.
                             <br />
@@ -26,10 +27,10 @@ function HomeText(){
                             Security: We use advanced security measures to ensure your payments and personal information are safe.
                             Impactful: Whether you're donating or running a campaign, our platform helps you make a tangible difference in the world by connecting people to causes.
                     </p>
-                    <div>
-                        
-                    </div>
+                    
             </div>
+        </div>
+       
     )
 }
 export default HomeText;

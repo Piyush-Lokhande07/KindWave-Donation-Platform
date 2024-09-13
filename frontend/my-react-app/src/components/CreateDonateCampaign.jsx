@@ -27,12 +27,14 @@ function CreateCampaign() {
     };
 
     return (
-        <div className="create-campaign">
+        <div className='form-body'>
+            <div className="create-campaign">
             <h2>Create a New Donation Campaign</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="title">Campaign Title:</label>
+                <div className='lab'>Enter Title of your campaign:</div>
                     <input
+                        placeholder='Ex.Seeds of Hope'
                         type="text"
                         id="title"
                         name="title"
@@ -42,8 +44,9 @@ function CreateCampaign() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="description">Description:</label>
+                    <div className='lab'>Description of your Campaign :</div>
                     <textarea
+                    placeholder='Write here..'
                         id="description"
                         name="description"
                         value={formData.description}
@@ -53,8 +56,9 @@ function CreateCampaign() {
                     ></textarea>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="accountNumber">Account Number:</label>
+                <div className='lab'>Enter Account Number: </div>
                     <input
+                        placeholder='Account number'
                         type="text"
                         id="accountNumber"
                         name="accountNumber"
@@ -64,8 +68,9 @@ function CreateCampaign() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="donationAmount">Fixed Donation Amount:</label>
+                <div className='lab'>Enter Donation amount:</div>
                     <input
+                        placeholder='Donation amount'
                         type="number"
                         id="donationAmount"
                         name="donationAmount"
@@ -74,7 +79,7 @@ function CreateCampaign() {
                         required
                     />
                 </div>
-                <button type="submit">Create Campaign</button>
+                <button className="btn1 create-camp-btn"type="submit">Create Campaign</button>
             </form>
             {campaignId && (
                 <div className="campaign-id">
@@ -82,6 +87,8 @@ function CreateCampaign() {
                 </div>
             )}
         </div>
+        </div>
+        
     );
 }
 
