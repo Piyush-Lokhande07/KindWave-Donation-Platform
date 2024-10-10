@@ -6,7 +6,6 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    // Function to check if user is authenticated
     const checkAuthentication = async () => {
         try {
             const response = await axios.get('http://localhost:3000/auth/check', { withCredentials: true });

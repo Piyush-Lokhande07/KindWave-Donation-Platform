@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios for making API requests
+import axios from 'axios'; 
 
 function CreateCampaign() {
     const [formData, setFormData] = useState({
@@ -19,7 +19,7 @@ function CreateCampaign() {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3000/api/campaigns', formData);
-            setCampaignId(response.data.campaignId); // Set the campaign ID from response
+            setCampaignId(response.data.campaignId); 
             console.log('Campaign Created:', response.data.campaignId);
         } catch (error) {
             console.error('Error creating campaign:', error);

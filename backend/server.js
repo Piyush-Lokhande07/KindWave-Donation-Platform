@@ -16,33 +16,30 @@ const app = express();
 const crypto = require('crypto');
 
 
-// Initialize session middleware
 app.use(cookieParser());
 app.use(session({
     secret: process.env.SESSION_SECRET || 'your_secret_key',
-    resave: false, // Don't save session if unmodified
-    saveUninitialized: false, // Don't create a session until something is stored
+    resave: false, 
+    saveUninitialized: false, 
     cookie: {
-        secure: false, // In production, set to true if using HTTPS
-        httpOnly: true, // Helps with security by not exposing cookies to the browser
-        maxAge: 24 * 60 * 60 * 1000, // 24 hours session expiration
+        secure: false, 
+        httpOnly: true, 
+        maxAge: 24 * 60 * 60 * 1000, 
     }
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Configure Google OAuth strategy
+
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: 'http://localhost:3000/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
-    // Save the user profile (or a specific part of it)
     return done(null, profile);
 }));
 
-// Serialize and deserialize user to maintain authentication state
 passport.serializeUser((user, done) => {
     done(null, user);
 });
@@ -51,16 +48,16 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-// CORS configuration
+
 app.use(cors({
-    origin: 'http://localhost:3001', // Your frontend URL
+    origin: 'http://localhost:3001',
     methods: ['GET', 'POST'],
-    credentials: true // Allow cookies to be sent
+    credentials: true 
 }));
 
 app.use(express.json());
 
-// Set up your email transporter
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -69,7 +66,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Connect to PostgreSQL
 const client = new Client({
     connectionString: process.env.DB_URL,
 });
@@ -80,7 +76,6 @@ client.connect()
     })
     .catch(err => console.error('Connection error', err.stack));
 
-// Register endpoint
 app.post('/register', async (req, res) => {
     const { username, password, emailId } = req.body;
 
@@ -94,7 +89,7 @@ app.post('/register', async (req, res) => {
             [username, password]
         );
 
-        // Send a confirmation email
+      
         const mailOptions = {
             from: process.env.EMAIL_ID,
             to: emailId,
@@ -119,7 +114,6 @@ app.post('/register', async (req, res) => {
 });
 
 
-// Login endpoint
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
@@ -226,16 +220,16 @@ app.post('/order/validate',async(req,res)=>{
 
 
 
-// Google authentication routes
+
 app.get('/auth/google', passport.authenticate('google', { scope: ['email'] }));
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-    req.session.isAuthenticated = true; // Set session flag
+    req.session.isAuthenticated = true; 
     console.log("Session isAuthenticated callback:", req.session.isAuthenticated);
-    res.redirect('http://localhost:3001'); // Redirect to frontend
+    res.redirect('http://localhost:3001');
 });
 
-// Check if user is authenticated
+
 app.get('/auth/check', (req, res) => {
     console.log("Session isAuthenticated:", req.session.isAuthenticated);
     res.json({ isAuthenticated: req.session.isAuthenticated || false });

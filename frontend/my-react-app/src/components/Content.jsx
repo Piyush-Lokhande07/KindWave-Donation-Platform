@@ -3,10 +3,10 @@ import Navbar from './Navbar';
 import HomeText from './HomeText';
 import Footer from './Footer';
 import CampaignForm from './CampaignForm';
-import CreateCampaign from './CreateDonateCampaign'; // Ensure this component exists
+import CreateCampaign from './CreateDonateCampaign';
 
 function Content() {
-    const [currentView, setCurrentView] = useState('home'); // default view is home
+    const [currentView, setCurrentView] = useState('home'); 
 
     const handleNavClick = (view) => {
         setCurrentView(view);

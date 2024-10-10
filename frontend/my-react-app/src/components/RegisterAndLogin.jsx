@@ -52,7 +52,7 @@ function RegisterAndLogin() {
     }
 
     function handleGoogleLogin(e) {
-        e.preventDefault(); // Prevent the default button behavior
+        e.preventDefault(); 
         window.location.href = 'http://localhost:3000/auth/google';
     }
 

@@ -3,9 +3,9 @@ import axios from 'axios';
 
 function CampaignForm() {
     const [campaignId, setCampaignId] = useState('');
-    const [campaign, setCampaign] = useState(null);  // Stores the campaign details
-    const [error, setError] = useState(null);  // Stores any error messages
-    const [amount, setAmount] = useState(0);  // Initialize with a default value
+    const [campaign, setCampaign] = useState(null);  
+    const [error, setError] = useState(null);  
+    const [amount, setAmount] = useState(0);  
     const currency = "INR";
 
     const handleInputChange = (e) => {
@@ -14,15 +14,15 @@ function CampaignForm() {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        setError(null);  // Clear previous errors
-        setCampaign(null);  // Reset campaign details before making a request
+        setError(null);  
+        setCampaign(null);  
         
         try {
             const response = await axios.get(`http://localhost:3000/api/campaigns/${campaignId}`);
             const campaignData = response.data;
             setCampaign(campaignData);
-            // Update amount when campaign data is set
-            setAmount(Number(campaignData.donation_amount) || 0);  // Ensure it's a number
+           
+            setAmount(Number(campaignData.donation_amount) || 0);  
         } catch (err) {
             setError('Campaign ID does not exist. Please enter a valid Campaign ID.');
         }
@@ -52,13 +52,13 @@ function CampaignForm() {
             console.log(order);
 
             var options = {
-                "key": "rzp_test_TBBRXgPa4yzuqK", // Enter the Key ID generated from the Dashboard
-                amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "key": "rzp_test_TBBRXgPa4yzuqK", 
+                amount, 
                 currency,
-                "name": "Piyush Donation Platform", //your business name
+                "name": "Piyush Donation Platform", 
                 "description": "Test Transaction",
                 "image": "https://example.com/your_logo",
-                "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "order_id": order.id, 
                 "handler": async function (response){
                     const body = {
                         ...response,
@@ -75,10 +75,10 @@ function CampaignForm() {
                     });
 
                 },
-                "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-                    "name": "Piyush Lokhande", //your customer's name
+                "prefill": {
+                    "name": "Piyush Lokhande",
                     "email": "gaurav.kumar@example.com", 
-                    "contact": "9000090000"  //Provide the customer's phone number for better conversion rates 
+                    "contact": "9000090000"  
                 },
                 "notes": {
                     "address": "Razorpay Corporate Office"
