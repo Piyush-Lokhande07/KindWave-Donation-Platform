@@ -35,7 +35,7 @@ Kindwave is an intuitive and secure online donation platform that empowers users
 - **Express.js** – REST API server to handle all backend operations
 - **PostgreSQL** – Relational database for storing users, campaigns, and donation records
 - **Node.js** – Runtime environment for server-side code
-- **JWT (JSON Web Tokens)** – Secure authentication and session handling
+- **Express-session and AuthContext** – Secure authentication and session handling
 - **Google OAuth 2.0** – Third-party login integration
 - **Razorpay API** – UPI payment integration
 - **Nodemailer** – Email notifications system
