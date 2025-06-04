@@ -7,7 +7,6 @@ Kindwave is an intuitive and secure online donation platform that empowers users
 ## 🚀 Features
 
 - 🔐 **User Registration & Login**  
-  - Secure sign-up and login using **JWT authentication**
   - Social login with **Google OAuth 2.0** for seamless access
 
 - 📝 **Campaign Creation**  
